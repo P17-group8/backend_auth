@@ -3,7 +3,7 @@ from auth_example.models.account    import Account
 from rest_framework                 import serializers
 from .accountSerializer             import AccountSerializer
 
-class UserSerializer(serializers.ModelSerializers):
+class UserSerializer(serializers.ModelSerializer):
     account = AccountSerializer()
     class Meta:
         model   = User
