@@ -25,10 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(!_6r$#6cx-b0i9nda5%0d8x@mdd6c6*pa@*fk@t9z+$2@muj*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS           = []
-CORS_ALLOW_ALL_ORIGINS  = True
+DEBUG         = False
+ALLOWED_HOSTS = ['localhost']
 
 # Application definition
 
@@ -40,15 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'auth_example',
-    'rest_framework',
-    'corsheaders'
+    'rest_framework'
 ]
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME'     : timedelta(minutes=15),
     'REFRESH_TOKEN_LIFETIME'    : timedelta(days=1),
     'ROTATE_REFRESH_TOKENS'     : False,
-    'BLACKLIST_AFTER_ROTATION'  : True,
+    'BLACKLIST_AFTER_ROTATION'  : False,
     'UPDATE_LAST_LOGIN'         : False,
     'ALGORITHM'                 : 'HS256',
     'USER_ID_FIELD'             : 'id',
@@ -62,8 +59,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware'
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
 
 REST_FRAMEWORK = {
@@ -102,10 +98,10 @@ WSGI_APPLICATION = 'park_auth_example.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE'   : 'django.db.backends.postgresql_psycopg2',
-        'NAME'     : 'auth_ms_17',
-        'USER'     : 'postgres',
-        'PASSWORD' : 'postgres',
-        'HOST'     : 'localhost',
+        'NAME'     : 'd6jhs0mqqeh67u',
+        'USER'     : 'vfrjstteatwaqh',
+        'PASSWORD' : '1aec6d346e899c497fd7c4e82636b4e0fdc44a27cc2a66d9cfbe206d7d5db805',
+        'HOST'     : 'ec2-54-146-82-179.compute-1.amazonaws.com',
         'PORT'     : '5432'
     }
 }
