@@ -45,14 +45,14 @@ INSTALLED_APPS = [
 ]
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME'  : timedelta(minutes=15),
-    'REFRESH_TOKEN_LIFETIME' : timedelta(days=1),
-    'ROTATE_REFRESH_TOKENS' : False,
-    'BLACKLIST_AFTER_ROTATION' : True,
-    'UPDATE_LAST_LOGIN' : False,
-    'ALGORITHM' : 'HS256',
-    'USER_ID_FIELD' : 'id',
-    'USER_ID_CLAIM' : 'user.id',    
+    'ACCESS_TOKEN_LIFETIME'     : timedelta(minutes=15),
+    'REFRESH_TOKEN_LIFETIME'    : timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS'     : False,
+    'BLACKLIST_AFTER_ROTATION'  : True,
+    'UPDATE_LAST_LOGIN'         : False,
+    'ALGORITHM'                 : 'HS256',
+    'USER_ID_FIELD'             : 'id',
+    'USER_ID_CLAIM'             : 'user_id',    
 }
 
 MIDDLEWARE = [
@@ -74,7 +74,8 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
-ROOT_URLCONF = 'park_auth_example.urls'
+AUTH_USER_MODEL  = 'auth_example.User'
+ROOT_URLCONF     = 'park_auth_example.urls'
 
 TEMPLATES = [
     {
@@ -100,8 +101,12 @@ WSGI_APPLICATION = 'park_auth_example.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE'   : 'django.db.backends.postgresql_psycopg2',
+        'NAME'     : 'auth_ms_17',
+        'USER'     : 'postgres',
+        'PASSWORD' : 'postgres',
+        'HOST'     : 'localhost',
+        'PORT'     : '5432'
     }
 }
 
