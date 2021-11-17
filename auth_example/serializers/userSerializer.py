@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
     def create (self, validated_data):
         accountData=validated_data.pop('account')
         user_instance = User.objects.create(**validated_data)
-        Account.objects.create(user==user_instance, **accountData)
+        Account.objects.create(user=user_instance, **accountData)
         return user_instance
 
     def to_representation(self, obj):
@@ -26,7 +26,7 @@ class UserSerializer(serializers.ModelSerializer):
             'account'   : {
                 'id'                : account.id,
                 'balance'           : account.balance,        
-                'lastChange_date'   : account.last_change_date,
+                #'lastChangeDate'    : account.last_change_date,
                 'isActive'          : account.is_active
             }
         }
