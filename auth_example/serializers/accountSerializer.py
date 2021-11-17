@@ -3,7 +3,7 @@ from auth_example.models.user       import User
 from rest_framework                 import serializers
 
 
-class AccountSerializer(serializers.ModelSerializers):
+class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
         fields = ['balance', 'last_change_date', 'is_active']     
