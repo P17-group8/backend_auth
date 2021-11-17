@@ -14,13 +14,12 @@ class AccountSerializer(serializers.ModelSerializer):
         return {
             'id'                : account.id,
             'balance'           : account.balance,        
-            'lastChange_date'   : account.last_change_date,
+            'lastChangeDate'    : account.last_change_date,
             'isActive'          : account.is_active,
             'user'   : {
                 'id'        : user.id, 
                 'name'      : user.name,
                 'email'     : user.email,
-                
             }
         }
 
