@@ -1,0 +1,2 @@
+from .operadorDetailView import OperadorDetailView
+from .operadorCreateView import OperadorCreateView
