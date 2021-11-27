@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app_operator',
     'rest_framework',
+    'rest_framework_simplejwt',
 ]
+
+
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME'     : timedelta(minutes=30),
@@ -50,8 +53,8 @@ SIMPLE_JWT = {
     'UPDATE_LAST_LOGIN'         : False,
     'ALGORITHM'                 : 'HS256',
     'USER_ID_FIELD'             : 'id',
-    'USER_ID_CLAIM'             : 'user_id',
-    'AUTH_HEADER_TYPES': ('JWT',),
+    'USER_ID_CLAIM'             : 'id_operador',
+    'AUTH_HEADER_TYPES': ('JWT', 'Bearer'),
 }
 
 MIDDLEWARE = [
@@ -67,9 +70,13 @@ MIDDLEWARE = [
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES' : (
         'rest_framework.permissions.AllowAny',
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES' : (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     )
 }
 

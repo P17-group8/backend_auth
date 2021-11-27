@@ -13,7 +13,7 @@ class UserManager(BaseUserManager):
      user.save(using=self._db)
      return user
     
-   def create_superuser(self, username, password):
+   def create_superuser(self, username, password=None):
 #"Creates and saves a superuser with the given username and password."
        user = self.create_user(
        username=username,
@@ -30,7 +30,7 @@ class Operador(AbstractBaseUser, PermissionsMixin):
      user_operador = models.CharField('Username', max_length=15, unique=True)
      password = models.CharField('Password', max_length=256)     
      identificacion = models.CharField('Identificacion', max_length=15)
-     email = models.EmailField('Email', max_length=100)
+     email = models.EmailField('Email', max_length=100, unique=True)
 
      def save(self, **kwargs):
          some_salt = 'mMUj0DrIK6vgtdIYepkIxN'
