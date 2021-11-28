@@ -14,7 +14,7 @@ class OperadorSerializer(serializers.ModelSerializer):
             'id':operador.id,
             'nombre':operador.nombre_operador,
             'apellido':operador.apellido_operador,
-            'username':operador.user_operador,
+            'user_operador':operador.user_operador,
             'identificacion':operador.identificacion,
             'email':operador.email
         }   

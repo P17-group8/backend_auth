@@ -5,6 +5,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 class OperadorCreateView(views.APIView):
     def post(self, request, *args, **kwargs):
+        print('a')
         serializer = OperadorSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
