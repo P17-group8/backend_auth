@@ -10,9 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from pathlib import Path
+from pathlib        import Path
 from datetime       import timedelta
-import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +25,7 @@ SECRET_KEY = 'django-insecure-pr-yb9hx=410$_nwzji@j-+&eish$wdtq3sarl(7c59$1^1r(g
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -40,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app_operator',
     'rest_framework',
-    'rest_framework_simplejwt',
+    #'rest_framework_simplejwt',
 ]
 
 
@@ -54,7 +53,7 @@ SIMPLE_JWT = {
     'ALGORITHM'                 : 'HS256',
     'USER_ID_FIELD'             : 'id',
     'USER_ID_CLAIM'             : 'id_operador',
-    'AUTH_HEADER_TYPES': ('JWT', 'Bearer'),
+    #'AUTH_HEADER_TYPES': ('JWT', 'Bearer'),
 }
 
 MIDDLEWARE = [
@@ -75,8 +74,8 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_AUTHENTICATION_CLASSES' : (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+       # 'rest_framework.authentication.TokenAuthentication',
+       # 'rest_framework.authentication.SessionAuthentication',
     )
 }
 
@@ -108,10 +107,10 @@ WSGI_APPLICATION = 'operator_ms.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE'   : 'django.db.backends.postgresql_psycopg2',
-        'NAME'     : 'ddlbn8l8aip6nd',
-        'USER'     : 'aqehzcyyapmdyw',
-        'PASSWORD' : '82b1fd484b924716e8af177a2960e12a81c4433c352c432752b8cae5b454fd68',
-        'HOST'     : 'ec2-52-86-193-24.compute-1.amazonaws.com',
+        'NAME'     : 'auth_ms_db_dev',
+        'USER'     : 'postgres',
+        'PASSWORD' : 'postgres',
+        'HOST'     : 'localhost',
         'PORT'     : '5432'
     }
 }
@@ -159,4 +158,4 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-""" django_heroku.setting(locals()) """
+#""" django_heroku.setting(locals()) """

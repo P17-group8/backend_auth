@@ -10,9 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from pathlib import Path
-from datetime       import timedelta
-import django_heroku
+from    pathlib        import Path
+from    datetime       import timedelta
+import  django_heroku
+import  json
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app_operator',
     'rest_framework',
-    'rest_framework_simplejwt',
+    #'rest_framework_simplejwt',
 ]
 
 
@@ -54,7 +55,7 @@ SIMPLE_JWT = {
     'ALGORITHM'                 : 'HS256',
     'USER_ID_FIELD'             : 'id',
     'USER_ID_CLAIM'             : 'id_operador',
-    'AUTH_HEADER_TYPES': ('JWT', 'Bearer'),
+    #'AUTH_HEADER_TYPES': ('JWT', 'Bearer'),
 }
 
 MIDDLEWARE = [
@@ -75,13 +76,13 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_AUTHENTICATION_CLASSES' : (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
     )
 }
 
-AUTH_USER_MODEL  = 'app_operator.Operador'
-ROOT_URLCONF = 'operator_ms.urls'
+AUTH_USER_MODEL = 'app_operator.Operador'
+ROOT_URLCONF    = 'operator_ms.urls'
 
 TEMPLATES = [
     {
