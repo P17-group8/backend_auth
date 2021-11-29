@@ -1,6 +1,6 @@
-from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-from django.contrib.auth.hashers import make_password
+from django.db                    import models
+from django.contrib.auth.models   import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.contrib.auth.hashers  import make_password
 
 
 class UserManager(BaseUserManager):
@@ -24,18 +24,18 @@ class UserManager(BaseUserManager):
        return user
 
 class Operador(AbstractBaseUser, PermissionsMixin):
-     id = models.BigAutoField(primary_key=True)
-     nombre_operador = models.CharField('Nombre', max_length=15)
-     apellido_operador = models.CharField('Apellido', max_length=15)
-     user_operador = models.CharField('Username', max_length=15, unique=True)
-     password = models.CharField('Password', max_length=256)     
-     identificacion = models.CharField('Identificacion', max_length=15)
-     email = models.EmailField('Email', max_length=100, unique=True)
+     id                 = models.BigAutoField(primary_key=True)
+     nombre_operador    = models.CharField('Nombre',         max_length=15)
+     apellido_operador  = models.CharField('Apellido',       max_length=15)
+     username           = models.CharField('Username',       max_length=15, unique=True)
+     password           = models.CharField('Password',       max_length=256)     
+     identificacion     = models.CharField('Identificacion', max_length=15)
+     email              = models.EmailField('Email',         max_length=100, unique=True)
 
      def save(self, **kwargs):
          some_salt = 'mMUj0DrIK6vgtdIYepkIxN'
          self.password = make_password(self.password, some_salt)
          super().save(**kwargs)
       
-     objects = UserManager()
-     USERNAME_FIELD = 'user_operador'
+     objects        = UserManager()
+     USERNAME_FIELD = 'username'
