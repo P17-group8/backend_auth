@@ -1,5 +1,5 @@
-from django.contrib import admin
+from django.contrib         import admin
+from .models.operador       import Operador
 
 # Register your models here.
-from .models.operador import Operador
 admin.site.register(Operador)
